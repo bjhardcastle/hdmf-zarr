@@ -184,8 +184,8 @@ class ZarrIO(HDMFIO):
 
     def is_remote(self):
         """Return True if the file is remote, False otherwise"""
-        from zarr.storage import FSStore
-        if isinstance(self.file.store, FSStore):
+        from zarr.storage import FSStore, ConsolidatedMetadataStore
+        if isinstance(self.file.store, (FSStore, ConsolidatedMetadataStore)):
             return True
         else:
             return False
